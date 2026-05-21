@@ -35,5 +35,14 @@
   },
   "overrides": {
     "postcss": "^8.5.10"
+  },
+  "openclaw": {
+    "compat": {
+      "pluginApi": ">=2026.5.19",
+      "minGatewayVersion": "2026.5.19"
+    },
+    "build": {
+      "openclawVersion": "2026.5.19"
+    }
   }
 }
