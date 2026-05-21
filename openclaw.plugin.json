@@ -1,0 +1,12 @@
+{
+  "id": "call-my-agent",
+  "name": "Call My Agent",
+  "description": "Local-first private voice sessions with an OpenClaw agent, exposed through localhost and optional Tailscale Serve.",
+  "version": "0.1.2",
+  "skills": ["skills/call-my-agent"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

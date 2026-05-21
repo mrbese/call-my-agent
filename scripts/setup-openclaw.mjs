@@ -95,13 +95,20 @@ env.set(
 await writeEnvFile(envPath, env);
 console.log(`Wrote ${envPath}`);
 
-if (installDeps || !(await fileExists(path.join(appRoot, "node_modules")))) {
+if (installDeps) {
   console.log("Installing dependencies with npm install...");
   const install = await run("npm", ["install"], { cwd: appRoot, timeout: 120000 });
   if (!install.ok) {
     console.error(install.stderr || install.error);
     process.exit(1);
   }
+} else if (!(await fileExists(path.join(appRoot, "node_modules")))) {
+  console.log("");
+  console.log("Dependencies are not installed yet.");
+  console.log("After confirming package installation is OK, run:");
+  console.log("  npm install");
+  console.log("Or rerun setup with:");
+  console.log("  npm run setup:openclaw -- --install");
 }
 
 console.log("");

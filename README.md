@@ -85,6 +85,18 @@ the risk.
 
 ## Quick Start
 
+Recommended OpenClaw install path:
+
+```bash
+openclaw plugins install clawhub:@mrbese/call-my-agent@0.1.2
+```
+
+This installs the ClawHub package that contains the app and the setup skill.
+GitHub remains the public source and provenance link, but ClawHub is the
+auditable install surface.
+
+Manual source checkout for development:
+
 ```bash
 cd call-my-agent
 npm install
@@ -100,7 +112,7 @@ http://127.0.0.1:3000
 
 Tap **Call My Agent** in the current local app UI to start a voice session.
 
-The public package is named `call-my-agent`.
+The public ClawHub package is named `@mrbese/call-my-agent`.
 
 Check the local setup at any time:
 
@@ -363,40 +375,21 @@ To stop the Linux service:
 systemctl --user disable --now call-my-agent.service
 ```
 
-## Skill Packaging Plan
+## ClawHub Package
 
-The public skill should be named `call-my-agent`.
+The ClawHub package includes:
 
-Suggested skill metadata:
+- `openclaw.plugin.json`, so OpenClaw can inspect the package before loading
+  runtime behavior.
+- `skills/call-my-agent/SKILL.md`, so agents use the packaged app root instead
+  of cloning GitHub during normal setup.
+- The local Next.js app, setup scripts, service templates, and Tailscale helper.
 
-```yaml
-name: call-my-agent
-version: 1.0.0
-description: |
-  Create a private phone line between you and your OpenClaw agent. Call your
-  agent from your phone, or let your agent call you, without Twilio or phone
-  number rental. Runs locally, uses existing OpenClaw OpenAI auth profiles, and
-  exposes access safely through Tailscale.
-triggers:
-  - "call my agent"
-  - "agent call me"
-  - "let my agent call me"
-  - "direct phone line with my agent"
-  - "private phone line with my OpenClaw agent"
-  - "OpenClaw voice without phone number"
-  - "call OpenClaw from my phone"
-  - "voice call with my OpenClaw agent"
-  - "no Twilio voice agent"
-tools:
-  - shell
-  - filesystem
-mutating: true
-```
-
-Expected skill commands:
+Useful package commands:
 
 ```bash
 npm run setup:openclaw
+npm run setup:openclaw -- --install
 npm run doctor
 npm run tailscale:setup
 npm run tailscale:teardown
