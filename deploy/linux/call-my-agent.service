@@ -1,0 +1,16 @@
+[Unit]
+Description=Call My Agent local voice app
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__APP_DIR__
+Environment=HOSTNAME=127.0.0.1
+Environment=PORT=__PORT__
+ExecStart=/usr/bin/env npm run start -- --hostname 127.0.0.1 --port __PORT__
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

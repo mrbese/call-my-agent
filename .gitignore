@@ -1,0 +1,25 @@
+.DS_Store
+
+# Dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+
+# Local runtime state
+data/*.json
+data/*.jsonl
+logs/
+
+# Generated scratch files
+tmp/
+
+# Local release planning notes
+PUBLISH_PLAN.md
+PUBLISH_HANDOFF.md
