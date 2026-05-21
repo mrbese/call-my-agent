@@ -37,6 +37,9 @@
     "postcss": "^8.5.10"
   },
   "openclaw": {
+    "extensions": [
+      "./openclaw/plugin.mjs"
+    ],
     "compat": {
       "pluginApi": ">=2026.5.19",
       "minGatewayVersion": "2026.5.19"
