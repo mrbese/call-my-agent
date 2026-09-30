@@ -1,7 +1,7 @@
 {
   "name": "@mrbese/call-my-agent",
   "version": "0.1.2",
-  "license": "PolyForm-Noncommercial-1.0.0",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "setup:openclaw": "node scripts/setup-openclaw.mjs",
